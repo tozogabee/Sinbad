@@ -4,6 +4,8 @@ import org.example.sinbad.Adventure;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+
 
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class AdventureTest {
     }
 
     @Test
+    @DisplayName("test zero collected diamonds")
     public void testZeroCollectedDiamonds()  {
         Assertions.assertEquals(0,adventure1.getCollectedDiamonds());
         Assertions.assertEquals(0,adventure2.getCollectedDiamonds());
