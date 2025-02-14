@@ -4,15 +4,17 @@ public class Ankaa implements Bird{
 
     private int height;
     private String name;
+    HeightRange heightRange;
 
     public Ankaa(int height, String name) {
         this.height = height;
         this.name = name;
+        this.heightRange = HeightRange.getHeightRange(height);
     }
-
+    
     @Override
     public boolean isAtHeightRange(int height) {
-        return false;
+        return this.heightRange == HeightRange.getHeightRange(height);
     }
 
     @Override
@@ -30,5 +32,32 @@ public class Ankaa implements Bird{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public HeightRange getHeightRange() {
+        return this.heightRange;
+    }
+    
+    @Override
+    public String toString() {
+        return "OneDoesNotSimplyFlyOutOfDiamondIsland[flying "+this.getHeightRange()+" at "+this.getHeight()+" meters]";
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Ankaa ankaa = (Ankaa) obj;
+        return height == ankaa.height &&
+               name.equals(ankaa.name) &&
+               heightRange == ankaa.heightRange;
+    }
+    
+    @Override
+    public int hashCode() {
+        int result = Integer.hashCode(height);
+        result = 31 * result + name.hashCode();
+        result = 31 * result + heightRange.hashCode();
+        return result;
     }
 }

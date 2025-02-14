@@ -16,8 +16,8 @@ public class AdventureTest {
 
     @BeforeEach
     public void setUp() {
-        this.adventure1 = new Adventure(new Ankaa());
-        this.adventure2 = new Adventure(new Ankaa());
+        this.adventure1 = new Adventure(new Ankaa(700,"BigBird"));
+        this.adventure2 = new Adventure(new Ankaa(700,"BigBird"));
     }
 
     @Test
