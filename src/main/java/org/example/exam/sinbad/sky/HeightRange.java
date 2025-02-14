@@ -17,12 +17,18 @@ public enum HeightRange {
         this(0,0);
     }
 
-    static HeightRange getHeightRange(int height){
-
+    public static HeightRange getHeightRange(int height){
+        HeightRange act = HeightRange.BEYOND;
         for(HeightRange range : HeightRange.values()) {
-            //int max =
-            if(height > range.min && height < range.max) return range;
+
+            if(range.min == 0 && range.max == 0) {
+                continue;
+            }
+
+            else if(height >= range.min && height <= range.max) {
+                act = range;
+            }
         }
-        return HeightRange.BEYOND;
+        return act;
     }
 }

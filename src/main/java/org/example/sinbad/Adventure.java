@@ -22,7 +22,7 @@ public class Adventure {
     }
 
     public Adventure(){
-        this(new Bird[]{ new Ankaa() });
+        this(new Bird[]{ new Ankaa(700,"BigBird") });
     }
 
 
