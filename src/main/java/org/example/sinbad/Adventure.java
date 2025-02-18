@@ -2,10 +2,13 @@ package org.example.sinbad;
 
 import org.example.exam.sinbad.sky.Ankaa;
 import org.example.exam.sinbad.sky.Bird;
+import org.example.exam.sinbad.sky.HeightRange;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Adventure {
     protected static int STORE_DIAMONDS = 0;
@@ -56,5 +59,23 @@ public class Adventure {
 
     public int getDay() {
         return day;
+    }
+
+    public boolean callBird(int height) {
+        Optional<Bird> ankaOpt = birds.stream()
+                .filter(bird -> bird.isAtHeightRange(height))
+                .filter(bird -> bird instanceof Ankaa)
+                .findFirst();
+        if(ankaOpt.isPresent() && birds.size() > 1) {
+            this.doEscape(ankaOpt.get());
+            return true;
+        }
+        return false;
+    }
+
+    protected void doEscape(Bird bird) {
+        this.storeDiamonds(this.collectedDiamonds);
+        this.collectedDiamonds = 0;
+        this.day++;
     }
 }
