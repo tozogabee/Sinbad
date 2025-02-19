@@ -20,10 +20,24 @@ public class ValuableAdventure extends Adventure {
         super(birds);
         try(BufferedReader br = new BufferedReader(new FileReader(diamondFileName))) {
             String line;
-            while ((line = br.readLine()) != null) {
+            /*while ((line = br.readLine()) != null) {
                 String[] birdParts = line.split(" ");
-                Bird bird = new Ankaa(0,birdParts[0]);
-                birdDiamonds.put(bird,Integer.parseInt(birdParts[1]));
+                for(Bird birdAct : this.birds) {
+                    if(!birdDiamonds.containsKey(birdAct) && !birdAct.getName().equals(birdParts[0])) {
+                        Bird bird = new Ankaa(((Ankaa) birdAct).getHeight(), birdParts[0]);
+                        birdDiamonds.put(bird, Integer.parseInt(birdParts[1]));
+                    }
+                }
+
+            }*/
+            for(Bird birdAct : this.birds) {
+                while ((line = br.readLine()) != null) {
+                    String[] birdParts = line.split(" ");
+                    if(birdAct.getName().equals(birdParts[0])) {
+                        birdDiamonds.put(birdAct, Integer.parseInt(birdParts[1]));
+                        break;
+                    }
+                }
             }
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
@@ -35,7 +49,10 @@ public class ValuableAdventure extends Adventure {
     @Override
     protected void doEscape(Bird bird){
         super.doEscape(bird);
-        int diamondCount = this.birdDiamonds.get(bird);
+        int diamondCount = 0;
+        if(this.birdDiamonds.containsKey(bird)) {
+            diamondCount=this.birdDiamonds.get(bird);
+        }
         if(diamondCount > 0) {
             this.storeDiamonds(diamondCount);
             this.birdDiamonds.remove(bird);
