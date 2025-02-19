@@ -44,12 +44,12 @@ public class Ankaa implements Bird{
     }
     
     @Override
-        public boolean equals(Object obj) {
-            if (!(obj instanceof Ankaa)) {
-                return false;
-            }
-            return this.getHeightRange() == ((Ankaa)obj).getHeightRange() && this.getName().equals(((Ankaa)obj).getName());
+    public boolean equals(Object obj) {
+        if (obj instanceof Ankaa a) {
+            return this.getHeightRange() == a.getHeightRange() && this.getName().equals(a.getName());
         }
+        return false;
+    }
     
     @Override
     public int hashCode() {

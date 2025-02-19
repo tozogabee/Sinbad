@@ -1,35 +1,21 @@
 package org.example.sinbad;
 
-import org.example.exam.sinbad.sky.Ankaa;
 import org.example.exam.sinbad.sky.Bird;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ValuableAdventure extends Adventure {
     Map<Bird,Integer> birdDiamonds = new HashMap<>();
 
-
     public ValuableAdventure(String diamondFileName, Bird... birds){
         super(birds);
         try(BufferedReader br = new BufferedReader(new FileReader(diamondFileName))) {
             String line;
-            /*while ((line = br.readLine()) != null) {
-                String[] birdParts = line.split(" ");
-                for(Bird birdAct : this.birds) {
-                    if(!birdDiamonds.containsKey(birdAct) && !birdAct.getName().equals(birdParts[0])) {
-                        Bird bird = new Ankaa(((Ankaa) birdAct).getHeight(), birdParts[0]);
-                        birdDiamonds.put(bird, Integer.parseInt(birdParts[1]));
-                    }
-                }
-
-            }*/
             for(Bird birdAct : this.birds) {
                 while ((line = br.readLine()) != null) {
                     String[] birdParts = line.split(" ");

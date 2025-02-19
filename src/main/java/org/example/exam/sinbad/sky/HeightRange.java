@@ -20,12 +20,9 @@ public enum HeightRange {
     public static HeightRange getHeightRange(int height){
         HeightRange act = HeightRange.BEYOND;
         for(HeightRange range : HeightRange.values()) {
-
             if(range.min == 0 && range.max == 0) {
                 continue;
-            }
-
-            else if(height >= range.min && height <= range.max) {
+            } else if(height >= range.min && height <= range.max) {
                 act = range;
             }
         }

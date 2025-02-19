@@ -54,6 +54,7 @@ public class AdventureTest {
 
     @Test
     public void testCallBirdFailFullThreeDays() {
+        this.adventureFailFullThreeDays.clearStoredDiamonds();
         this.adventureFailFullThreeDays.collectDiamonds(100);
         assertEquals(100, this.adventureFailFullThreeDays.getCollectedDiamonds());
         assertTrue(this.adventureFailFullThreeDays.callBird(600));
